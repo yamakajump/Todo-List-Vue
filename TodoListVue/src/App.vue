@@ -25,13 +25,12 @@ const saveTasks = () => {
 </script>
 
 <template>
-  <div id="app" class="container">
-    <header>
-      <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <div id="app" class="container my-4">
+    <header class="text-center mb-4">
+      <h1 class="display-4 text-primary">Vue.js ToDo Application</h1>
     </header>
 
     <main>
-      <h1 class="my-4">Vue.js ToDo Application</h1>
       <AddTaskForm @add-task="addTask"></AddTaskForm>
       <TaskList :tasks="tasks" @delete-task="deleteTask"></TaskList>
     </main>
@@ -41,23 +40,5 @@ const saveTasks = () => {
 <style scoped>
 header {
   line-height: 1.5;
-  text-align: center;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
     <div>
-      <div class="filters my-4">
+      <div class="filters mb-4">
         <button class="btn btn-secondary mr-2" @click="filterTasks('all')">Toutes</button>
         <button class="btn btn-secondary mr-2" @click="filterTasks('À faire')">À faire</button>
         <button class="btn btn-secondary mr-2" @click="filterTasks('En cours')">En cours</button>
@@ -15,7 +15,6 @@
           :key="index" 
           :task="task"
           @delete-task="deleteTask(index)"
-          @update-task="updateTask"
         ></TaskItem>
       </ul>
     </div>
@@ -26,7 +25,7 @@
   import { ref, watch } from 'vue';
   
   const props = defineProps(['tasks']);
-  const emit = defineEmits(['delete-task', 'update-task']);
+  const emit = defineEmits(['delete-task']);
   
   const filteredTasks = ref(props.tasks);
   
@@ -52,10 +51,6 @@
   
   const deleteTask = (index) => {
     emit('delete-task', index);
-  };
-  
-  const updateTask = () => {
-    emit('update-task');
   };
   </script>
   

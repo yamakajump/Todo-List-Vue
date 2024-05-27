@@ -1,18 +1,18 @@
 <template>
-    <form @submit.prevent="submitForm">
-      <div class="form-group">
+    <form @submit.prevent="submitForm" class="mb-4 p-4 border rounded shadow-sm bg-light">
+      <div class="form-group mb-3">
         <label for="description">Description</label>
         <input type="text" class="form-control" v-model="description" required>
       </div>
-      <div class="form-group">
+      <div class="form-group mb-3">
         <label for="startDate">Date de début</label>
         <input type="date" class="form-control" v-model="startDate" required>
       </div>
-      <div class="form-group">
+      <div class="form-group mb-3">
         <label for="endDate">Date de fin</label>
         <input type="date" class="form-control" v-model="endDate" required>
       </div>
-      <div class="form-group">
+      <div class="form-group mb-3">
         <label for="status">État</label>
         <select class="form-control" v-model="status" required>
           <option>À faire</option>
@@ -20,7 +20,7 @@
           <option>Terminé</option>
         </select>
       </div>
-      <div class="form-group">
+      <div class="form-group mb-3">
         <label for="priority">Priorité</label>
         <select class="form-control" v-model="priority" required>
           <option>Haute</option>
@@ -28,7 +28,10 @@
           <option>Basse</option>
         </select>
       </div>
-      <button type="submit" class="btn btn-primary">Ajouter la tâche</button>
+      <button type="submit" class="btn btn-primary btn-block">Ajouter la tâche</button>
+      <div v-if="errorMessage" class="alert alert-danger mt-3">
+        {{ errorMessage }}
+      </div>
     </form>
   </template>
   
@@ -40,10 +43,21 @@
   const endDate = ref('');
   const status = ref('À faire');
   const priority = ref('Moyenne');
+  const errorMessage = ref('');
   
   const emit = defineEmits(['add-task']);
   
   const submitForm = () => {
+    if (!description.value.trim()) {
+      errorMessage.value = 'Veuillez saisir une description.';
+      return;
+    }
+  
+    if (new Date(startDate.value) > new Date(endDate.value)) {
+      errorMessage.value = 'La date de fin ne peut pas être antérieure à la date de début.';
+      return;
+    }
+  
     const newTask = {
       description: description.value,
       startDate: startDate.value,
@@ -52,11 +66,14 @@
       priority: priority.value
     };
     emit('add-task', newTask);
+  
+    // Réinitialiser le formulaire
     description.value = '';
     startDate.value = '';
     endDate.value = '';
     status.value = 'À faire';
     priority.value = 'Moyenne';
+    errorMessage.value = '';
   };
   </script>
   
