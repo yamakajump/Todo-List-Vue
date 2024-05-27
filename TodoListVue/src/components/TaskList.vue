@@ -46,7 +46,19 @@
   };
   
   const sortTasks = (criteria) => {
-    filteredTasks.value.sort((a, b) => a[criteria].localeCompare(b[criteria]));
+    if (criteria === 'priority') {
+      filteredTasks.value.sort((a, b) => {
+        // Trier par priorité
+      });
+    } else if (criteria === 'startDate') {
+      filteredTasks.value.sort((a, b) => {
+        // Trier par date de début
+      });
+    } else if (criteria === 'endDate') {
+      filteredTasks.value.sort((a, b) => {
+        // Trier par date de fin
+      });
+    }
   };
   
   const deleteTask = (index) => {

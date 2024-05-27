@@ -6,11 +6,11 @@
       </div>
       <div class="form-group mb-3">
         <label for="startDate">Date de début</label>
-        <input type="date" class="form-control" v-model="startDate" required>
+        <input type="date" class="form-control" v-model="startDate" :min="today" required>
       </div>
       <div class="form-group mb-3">
         <label for="endDate">Date de fin</label>
-        <input type="date" class="form-control" v-model="endDate" required>
+        <input type="date" class="form-control" v-model="endDate" :min="today" required>
       </div>
       <div class="form-group mb-3">
         <label for="status">État</label>
@@ -39,6 +39,7 @@
   import { ref } from 'vue';
   
   const description = ref('');
+  const today = new Date().toISOString().split('T')[0]; // Date du jour au format YYYY-MM-DD
   const startDate = ref('');
   const endDate = ref('');
   const status = ref('À faire');
