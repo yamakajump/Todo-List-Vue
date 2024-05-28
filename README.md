@@ -20,12 +20,6 @@ Cette application de gestion des tâches a été réalisée avec Vue.js. Elle pe
 
 ## Project Setup
 
-### **Naviguez dans le dossier du projet**
-
-```sh
-cd TodoListVue
-```
-
 ### Installez les dépendances
 
 ```sh
@@ -39,29 +33,6 @@ npm run dev
 ```
 
 Ouvrez votre navigateur et accédez à l'URL indiquée (généralement `http://localhost:3000`).
-
-## Structure du projet
-
-TodoListVue/
-├── index.html
-├── jsconfig.json
-├── package.json
-├── package-lock.json
-├── public
-│   └── favicon.ico
-├── README.md
-├── src
-│   ├── App.vue
-│   ├── assets
-│   │   ├── base.css
-│   │   ├── logo.svg
-│   │   └── main.css
-│   ├── components
-│   │   ├── AddTaskForm.vue
-│   │   ├── TaskList.vue
-│   │   └── TaskItem.vue
-│   └── main.js
-└── vite.config.js
 
 ## Composants principaux
 
