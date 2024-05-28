@@ -27,18 +27,27 @@ const saveTasks = () => {
 <template>
   <div id="app" class="container my-4">
     <header class="text-center mb-4">
-      <h1 class="display-4 text-primary">Vue.js ToDo Application</h1>
+      <h1 class="display-4 text-primary">Todo List Now !</h1>
     </header>
 
     <main>
       <AddTaskForm @add-task="addTask"></AddTaskForm>
       <TaskList :tasks="tasks" @delete-task="deleteTask"></TaskList>
     </main>
+
+    <footer class="text-center py-3">
+      Réalisé par BATARD Corentin et BASOL Nathan
+    </footer>
   </div>
 </template>
 
 <style scoped>
 header {
   line-height: 1.5;
+}
+footer {
+  background-color: #f8f9fa;
+  color: #6c757d;
+  font-size: 14px;
 }
 </style>
